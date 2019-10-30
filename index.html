@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>IBF 2020</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="" />
+		<script type="application/x-javascript">
+			addEventListener("load", function() {
+				setTimeout(hideURLbar, 0);
+			}, false);
+
+			function hideURLbar() {
+				window.scrollTo(0, 1);
+			}
+		</script>
+		<!-- CSS -->
+		<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<link href="css/style.css" rel='stylesheet' type='text/css' />
+		<link href="css/smoothbox.css" rel="stylesheet" type='text/css'>
+		<!-- js -->
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script type="text/javascript">
+			var imgUrl = 'https://ibf2020.github.io/images/western.jpeg';
+			var lineLink = 'https://ibf2020.github.io/';
+			var descContent =
+				'The second International Workshop on Intelligent Bug Fixing (IBF) is the principal venue for works in the area of intelligent bug fixing.';
+			var shareTitle = 'IBF 2020';
+			var appid = '';
+
+			$.ajax({
+				type: 'POST',
+				url: "http://dev.mymax.cn/running/comm/weixin/open/jsSDKConfig",
+				dataType: "json",
+				data: {
+					url: window.location.href
+				},
+				success: function(response) {
+					var appId = response.s.appId;
+					var timestamp = response.s.timeStamp;
+					var nonceStr = response.s.nonceStr;
+					var signature = response.s.signature;
+
+					wx.config({
+						debug: false,
+						appId: appId,
+						timestamp: timestamp,
+						nonceStr: nonceStr,
+						signature: signature,
+						jsApiList: [
+							'checkJsApi',
+							'onMenuShareTimeline',
+							'onMenuShareAppMessage'
+						]
+					});
+					wx.ready(function() {
+
+						wx.onMenuShareTimeline({
+							title: shareTitle, // 分享标题
+							link: lineLink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+							imgUrl: imgUrl, // 分享图标
+							success: function() {
+								// 用户确认分享后执行的回调函数
+							},
+							cancel: function() {
+								// 用户取消分享后执行的回调函数
+							}
+						});
+						wx.onMenuShareAppMessage({
+							title: shareTitle, // 分享标题
+							desc: descContent, // 分享描述
+							link: lineLink, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+							imgUrl: imgUrl, // 分享图标
+							type: '', // 分享类型,music、video或link，不填默认为link
+							dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+							success: function() {
+								// 用户确认分享后执行的回调函数
+
+							},
+							cancel: function() {
+								// 用户取消分享后执行的回调函数
+							}
+						});
+					});
+				},
+				error: function(response) {
+					window.parent.growl("删除失败[" + response.responseText + "]!", "error");
+				}
+			});
+		</script>
+		<!-- font -->
+		<link href="http://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+		 rel='stylesheet' type='text/css'>
+	</head>
+
+	<body>
+		<div class="w3ls-banner">
+			<div class="center-container">
+				<!-- 标题栏 -->
+				<div class="navigation">
+					<div class="container">
+						<div class="navigation-right">
+							<span class="menu"><img src="images/menu.png" alt=" " /></span>
+							<nav class="link-effect-3" id="link-effect-3">
+								<ul class="nav1 nav">
+									<li class="active"><a data-hover="Home" href="index.html">Home</a></li>
+									<li><a href="#Introduction" class="scroll" data-hover="Introduction">Introduction</a></li>
+									<li><a href="#ImportantDates" class="scroll" data-hover="Important&nbsp;Dates">Important&nbsp;Dates</a></li>
+									<li><a href="#CallforPaper" class="scroll" data-hover="Call&nbsp;for&nbsp;Paper">Call&nbsp;for&nbsp;Paper</a></li>
+									<li><a href="#Organization" class="scroll" data-hover="Organization">Organization</a></li>
+									<!-- <li><a href="#submission" class="scroll" data-hover="submission">submission</a></li> -->
+									<!-- <li><a href="#Keynote" class="scroll" data-hover="Keynote">Keynote</a></li> -->
+									<!-- <li><a href="#Program" class="scroll" data-hover="Program">Program</a></li> -->
+								</ul>
+							</nav>
+							<script>
+								$("span.menu").click(function() {
+									$("ul.nav1").slideToggle(300, function() {
+										// Animation complete.
+									});
+								});
+							</script>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<!-- 大图部分 -->
+				<div class="w3ls_banner_info">
+					<div class="container">
+						<div class="w3l_banner_logo">
+							<h2>IBF</h2>
+						</div>
+						<h3>The Second International Workshop on Intelligent Bug Fixing </h3>
+						<p style="font-size: 1.3em">February 18,2020<br />London,Ontario<br />co-located with SANER 2020</p>
+						<!-- 						<div class="more">
+							<a href="#" class="hvr-underline-from-center" data-toggle="modal" data-target="#myModal">Learn More</a>
+						</div>
+						<!-- 弹窗 -->
+						<!-- 						<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										Intelligent Bug Fixing
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									</div>
+									<div class="modal-body">
+										<img src="images/western.jpeg" alt=" " class="img-responsive" />
+										<p>The second International Workshop on Intelligent Bug Fixing (IBF) is the principal venue for works in the
+											area of intelligent bug fixing. It
+											focuses on how to fix bugs by using a series of intelligent technologies such as data mining, information
+											retrieval, machine learning, natural
+											language process, etc. In this workshop, we solicit high-quality contributions with consolidated and
+											thoroughly evaluated application-oriented
+											research results in the area of intelligent bug fixing that are worthy of archival publication in SANER 2020
+											workshop proceeding.
+											IBF 2020 will be held in London, Canada co-located with SANER 2020.</p>
+									</div>
+								</div>
+							</div>
+						</div> -->
+						-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Introduction -->
+		<div class="team" id="Introduction">
+			<div class="container">
+				<h3>Introduction</h3>
+				<P style="font-size:1.5em;margin-top: 5%;margin-bottom: 5%">The workshop will focus on intelligent bug fixing.
+					Generally, bug
+					fixing process includes bug understanding, bug localization, bug fixing, and bug validation. By using data mining,
+					information retrieval, machine learning, natural language processing, artificial intelligence technologies,
+					visualization technologies, human-computer interaction technologies and code analysis technologies, a series of
+					new automated algorithms will be proposed to improve the performance of developers bug fixing process. In this
+					workshop, we solicit high-quality contributions with consolidated and thoroughly evaluated application-oriented
+					research results in the area of intelligent bug fixing that are worthy of archival publication in SANER 2020
+					workshop proceeding. It is intended to (i) provide a summary of research that advances intelligent bug fixing
+					using multiple data analysis and processing techniques, and (ii) serve as a comprehensive collection of some of
+					the current state-of-the-art technologies within this content. The workshop will collaborate with the 27th IEEE
+					International Conference on Software Analysis, Evolution, and Reengineering (SANER 2020).</P>
+			</div>
+		</div>
+		<!-- Important Dates -->
+		<div class="team" id="ImportantDates" style="background-color:lightslategray">
+			<div class="container">
+				<h3>Important&nbsp;Dates</h3>
+				<ul class="date" style="font-size:1.3em">
+					<li>Abstract submission deadline: <b>December 1, 2019 AoE</b></li>
+					<li>Paper submission deadline: <b>December 6, 2019 AoE</b></li>
+					<li>Notifications: <b>December 20, 2019 AoE</b></li>
+					<li>Camera ready deadline: <b>December 30, 2019 AoE</b></li>
+					<li>Workshop day: <b>TBD</b></li>
+				</ul>
+			</div>
+		</div>
+		<!-- team -->
+		<div class="team" id="CallforPaper">
+			<div class="container">
+				<h3>Call&nbsp;for&nbsp;Paper</h3>
+				<p style="margin-top: 3em;font-size: 1.5em">Submissions from academia and industry reporting original research
+					results or practical experience are welcome. All submissions should consider the practical application of the idea
+					through case studies, experiments, empirical validation, or systematic comparisons with other approaches already
+					in practice. We strongly encourage authors to make available all data and software they use in their work, in
+					order to allow for replication of their results.The topics include (but are not limited to) the following:</p>
+				<ul class="call" style="font-size:1.3em">
+					<li>Big Data in Bug Fixing Activities</li>
+					<li>Bug Analysis</li>
+					<li>Software Artifacts Generation</li>
+					<li>Bug Summarization/Enrichment</li>
+					<li>Duplicates Detection</li>
+					<li>Bug Severity/Priority Prediction</li>
+					<li>Bug Assignment</li>
+					<li>Bug Localization</li>
+					<li>Automated Program Repair</li>
+					<li>Empirical Studies in Bug Analysis and Fixing</li>
+					<li>Intelligent Software Repair</li>
+					<li>Intelligent Software Testing</li>
+					<li>Knowledge Graph for Bug Fixing</li>
+					<li>AI in Intelligent Bug Fixing</li>
+					<li>Software Testing for AI-based Systems</li>
+				</ul>
+			</div>
+		</div>
+		<!-- team-bottom -->
+		<div class="team" id="Organization">
+			<div class="container">
+				<h3>Organization</h3>
+				<div style="margin: 5% 0">
+					<h3 style="font-size:1.5em">Organizing Committee</h3>
+					<div class="agile_team_grids">
+						<div class="col-md-4 agile_team_grid">
+							<div class="view w3-agile-view" style="margin:auto">
+								<img src="images/xiapu%20luo.jpg" alt=" " class="img-responsive" />
+								<div class="w3lmask" style="padding-top: 80%">
+									<p>The Hong Kong Polytechnic University, Hong Kong, China (csxluo@comp.polyu.edu.hk)</p>
+								</div>
+							</div>
+							<h4><a href="https://www4.comp.polyu.edu.hk/~csxluo/">Xiapu Luo</a></h4>
+						</div>
+						<div class="col-md-4 agile_team_grid">
+							<div class="view w3-agile-view" style="margin:auto">
+								<img src="images/weiyi%20shang.jpg" alt=" " class="img-responsive" />
+								<div class="w3lmask" style="padding-top: 80%">
+									<p>Concordia University, Canada (shang@encs.concordia.ca)</p>
+								</div>
+							</div>
+							<h4><a href="http://users.encs.concordia.ca/~shang/">Weiyi Shang</a></h4>
+						</div>
+						<div class="col-md-4 agile_team_grid">
+							<div class="view w3-agile-view" style="margin:auto">
+								<img src="images/sxb.jpg" alt=" " class="img-responsive" />
+								<div class="w3lmask" style="padding-top: 80%">
+									<p>Yangzhou University, China (xbsun@yzu.edu.cn)</p>
+								</div>
+							</div>
+							<h4><a href="http://www.risame.net/sun/">Xiaobing Sun</a></h4>
+						</div>
+						<div class="col-md-4 agile_team_grid">
+							<div class="view w3-agile-view" style="margin:auto">
+								<img src="images/zt.jpg" alt=" " class="img-responsive" />
+								<div class="w3lmask" style="padding-top: 80%">
+									<p>Macau University of Science and Technology, Macao, China (tazhang@must.edu.mo)</p>
+								</div>
+							</div>
+							<h4><a href="https://cszhangtao.github.io/">Tao Zhang</a></h4>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<!-- <div style="margin: 5% 0">
+					<h3 style="font-size:1.5em">Program Committee[TBD]</h3>
+					<table class="table table-striped" style="margin:3em 0"> -->
+						<!-- 						<tbody>
+							<tr>
+								<td>Yan Cai</td>
+								<td>Chinese Academy of Sciences</td>
+							</tr>
+							<tr>
+								<td>Lin Chen</td>
+								<td>Nanjing University</td>
+							</tr>
+							<tr>
+								<td>Yucong Duan</td>
+								<td>Hainan University</td>
+							</tr>
+							<tr>
+								<td>He Jiang</td>
+								<td>Dalian University of Technology</td>
+							</tr>
+							<tr>
+								<td>Jing Jiang</td>
+								<td>Beihang University</td>
+							</tr>
+							<tr>
+								<td>Sunghun Kim</td>
+								<td>Hong Kong University of Science and Technology</td>
+							</tr>
+							<tr>
+								<td>Xianglong Kong</td>
+								<td>Southeast University</td>
+							</tr>
+							<tr>
+								<td>Xuan-Bach D. Le</td>
+								<td>Carnegie Mellon University</td>
+							</tr>
+							<tr>
+								<td>Bin Li</td>
+								<td>Yangzhou University</td>
+							</tr>
+							<tr>
+								<td>Bixin Li</td>
+								<td>Southeast University</td>
+							</tr>
+							<tr>
+								<td>Li Li</td>
+								<td>Monash University</td>
+							</tr>
+							<tr>
+								<td>Yun Lin</td>
+								<td>National University of Singapore</td>
+							</tr>
+							<tr>
+								<td>Hui Liu</td>
+								<td>Beijing Institute of Technology</td>
+							</tr>
+							<tr>
+								<td>Yepang Liu</td>
+								<td>Southern University of Science and Technology</td>
+							</tr>
+							<tr>
+								<td>Xiapu Luo</td>
+								<td>Hong Kong Polytechnic University</td>
+							</tr>
+							<tr>
+								<td>Lei Ma</td>
+								<td>Harbin Institute of Technology</td>
+							</tr>
+							<tr>
+								<td>Martin Monperrus</td>
+								<td>KTH Royal Institute of Technology</td>
+							</tr>
+							<tr>
+								<td>Xin Peng</td>
+								<td>Fudan University</td>
+							</tr>
+							<tr>
+								<td>Weiyi Shang</td>
+								<td>Concordia University</td>
+							</tr>
+							<tr>
+								<td>Shin Yoo</td>
+								<td>KAIST</td>
+							</tr>
+							<tr>
+								<td>Shin Hwei Tan</td>
+								<td>Southern University of Science and Technology</td>
+							</tr>
+							<tr>
+								<td>Chuanqi Tao</td>
+								<td>Nanjing University of Aeronautics and Astronautics</td>
+							</tr>
+							<tr>
+								<td>Shaowei Wang</td>
+								<td>Queen's University</td>
+							</tr>
+							<tr>
+								<td>Zan Wang</td>
+								<td>Tianjin University</td>
+							</tr>
+							<tr>
+								<td>Rongxin Wu</td>
+								<td>Hong Kong University of Science and Technology</td>
+							</tr>
+							<tr>
+								<td>Xin Xia</td>
+								<td>Monash University</td>
+							</tr>
+							<tr>
+								<td>Yingfei Xiong</td>
+								<td>Peking University</td>
+							</tr>
+							<tr>
+								<td>Chang Xu</td>
+								<td>Nanjing University</td>
+							</tr>
+							<tr>
+								<td>Jifeng Xuan</td>
+								<td>Wuhan University</td>
+							</tr>
+							<tr>
+								<td>Hao Zhong</td>
+								<td>Shanghai Jiao Tong University</td>
+							</tr>
+						</tbody> -->
+					<!-- </table> -->
+				<!-- </div> -->
+			</div>
+		</div>
+		
+		<!-- bootstrap js -->
+		<script src="js/bootstrap.js"></script>
+		<!-- start-smooth-scrolling -->
+		<script type="text/javascript" src="js/move-top.js"></script>
+		<script type="text/javascript" src="js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event) {
+					event.preventDefault();
+					$('html,body').animate({
+						scrollTop: $(this.hash).offset().top
+					}, 1000);
+				});
+			});
+		</script>
+		<!-- start-smooth-scrolling -->
+		<!-- here stars scrolling icon -->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+					var defaults = {
+					containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+					};
+				*/
+
+				$().UItoTop({
+					easingType: 'easeOutQuart'
+				});
+
+			});
+		</script>
+		<!-- //here ends scrolling icon -->
+	</body>
+
+</html>
